@@ -36,105 +36,111 @@
   <br>
   <br>
 
-      <div class="container">
-        
-        <div class="row">
-          <div class="col-12">
-            <div class="lightbox-content">
-              <div class="row">
-                <div class="col-12">
-                  <div class="section-heading page-heading">
-                    <h2 class="section-title">Get in Touch</h2>
-                    <div class="animated-bar"></div>
-                  </div>
-                </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="lightbox-content">
+          <div class="row">
+            <div class="col-12">
+              <div class="section-heading page-heading">
+                <h2 class="section-title">Get in Touch</h2>
+                <div class="animated-bar"></div>
               </div>
-              <!-- Contact section-->
-              <div class="contact-section single-section">
-                <div class="row">
-                  <!-- Contact form-->
-                  <div class="col-12 col-lg-7">
-                    <form class="contact-form" id="contact-form" action="#">
-                      <h4 class="content-title">Message Me</h4>
-                      <div class="row">
-                        
-                        <div class="col-12 col-md-6 form-group"><input id="userNameInput" class="form-control" placeholder="User Name" type="text" name="name" id="userName" required=""></div>
-                        <div class="col-12 col-md-6 form-group"><input id="userEmailInput" class="form-control" placeholder="E-mail" type="email" name="email" required=""></div>
-                        <div class="col-12 form-group"><input id="userSubject" class="form-control"  type="text" name="subject" placeholder="Subject" required=""></div>
-                        <div class="col-12 form-group form-message"><textarea id="userDescription" class="form-control"  name="message" placeholder="Message" rows="5" required=""></textarea></div>
-                        
+            </div>
+          </div>
+          <!-- Contact section-->
+          <div class="contact-section single-section">
+            <div class="row">
+              <!-- Contact form-->
+              <div class="col-12 col-lg-7">
+                <form class="contact-form" id="contact-form" action="#">
+                  <h4 class="content-title">Message Me</h4>
+                  <div class="row">
+                    
+                    <div class="col-12 col-md-6 form-group"><input id="userNameInput" class="form-control" placeholder="User Name" type="text" name="name" required=""></div>
+                    <div class="col-12 col-md-6 form-group"><input id="userEmailInput" class="form-control" placeholder="E-mail" type="email" name="email" required=""></div>
+                    <div class="col-12 form-group"><input id="userSubject" class="form-control"  type="text" name="subject" placeholder="Subject" required=""></div>
+                    <div class="col-12 form-group form-message"><textarea id="userDescription" class="form-control"  name="message" placeholder="Message" rows="5" required=""></textarea></div>
+                    
 
-                        <!-- Button on Click Event -->
-                        <!-- Change - If needed your function name -->
-                        <div class="col-12 form-submit">
-                          <button 
-                             onclick="sendData(
-                              document.getElementById('userNameInput').value, 
-                              document.getElementById('userEmailInput').value, 
-                              document.getElementById('userSubject').value, 
-                              document.getElementById('userDescription').value
-                            )"
-                            class="btn button-main button-scheme" type="button">
-                            Send Message
-                          </button>
-                        </div>
+                    <!-- Button on Click Event -->
+                    <!-- Change - If needed your function name -->
+                    <div class="col-12 form-submit">
+                      <button 
+                         onclick="sendData(
+                          document.getElementById('userNameInput').value, 
+                          document.getElementById('userEmailInput').value, 
+                          document.getElementById('userSubject').value, 
+                          document.getElementById('userDescription').value
+                        )"
+                        class="btn button-main button-scheme" type="button">
+                        Send Message
+                      </button>
+                    </div>
 
-                        <br>
-                        <br>
+                    <br>
+                    <br>
 
-                        <div class="col-12 form-submit">
-                          <!-- Change - SignOut URL -->
-                          <a href="https://conglytran0301.github.io/Serverless/">
-                            <button 
-                            class="btn button-main button-scheme" type="button">
-                            SignOut
-                          </button>
-                          </a>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-
-                  <!-- Contact info-->
-                  <div class="col-12 col-lg-5">
-                    <div class="contact-info">
-                      <h4 class="content-title">Login Details</h4>
-                      <p class="info-description">Here are the login Details, fetched from AWS Cognito using AWS SDK for JavaScript</p>
-                      <ul class="list-unstyled list-info">
-                        <li>
-                          <div class="media align-items-center"><span class="info-icon"><i class="icon ion-logo-ionic"></i></span>
-                            <div class="media-body info-details">
-                              <h6 class="info-type">Name</h6><span class="info-value" id="userName"></span>
-                            </div>
-                          </div>
-                        </li>
-        
-                        <li>
-                          <div class="media align-items-center"><span class="info-icon"><i class="icon ion-md-send"></i></span>
-                            <div class="media-body info-details">
-                              <h6 class="info-type">Email Me</h6><span class="info-value" id="userEmail"></span>
-                            </div>
-                          </div>
-                        </li>
-                      </ul>
+                    <div class="col-12 form-submit">
+                      <!-- Change - SignOut URL -->
+                      <a href="https://conglytran0301.github.io/Serverless/" class="btn button-main button-scheme">SignOut</a>
                     </div>
                   </div>
+                </form>
+              </div>
+
+              <!-- Contact info-->
+              <div class="col-12 col-lg-5">
+                <div class="contact-info">
+                  <h4 class="content-title">Login Details</h4>
+                  <p class="info-description">Here are the login Details, fetched from AWS Cognito using AWS SDK for JavaScript</p>
+                  <ul class="list-unstyled list-info">
+                    <li>
+                      <div class="media align-items-center"><span class="info-icon"><i class="icon ion-logo-ionic"></i></span>
+                        <div class="media-body info-details">
+                          <h6 class="info-type">Name</h6><span class="info-value" id="userNameDisplay"></span>
+                        </div>
+                      </div>
+                    </li>
+    
+                    <li>
+                      <div class="media align-items-center"><span class="info-icon"><i class="icon ion-md-send"></i></span>
+                        <div class="media-body info-details">
+                          <h6 class="info-type">Email Me</h6><span class="info-value" id="userEmailDisplay"></span>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
-    <!--AWS SDK for javascript-->
-    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.834.0.min.js"></script>
 
-    <script src="api.js"></script>
+      <!--AWS SDK for javascript-->
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.834.0.min.js"></script>
 
-    <script src="main.js"></script>
+  <!-- JavaScript to Fetch and Display AWS Cognito Data -->
+  <script src="api.js"></script>
+
+  <!-- Main JavaScript -->
+  <script src="main.js"></script>
+
+  <script>
+    // Example function to display fetched data
+    function displayUserData(userName, userEmail) {
+      document.getElementById('userNameDisplay').textContent = userName;
+      document.getElementById('userEmailDisplay').textContent = userEmail;
+    }
+    
+    // Assuming `api.js` or `main.js` contains logic to fetch the user data
+    // and call `displayUserData` with appropriate parameters
+  </script>
 
 </body>
-
-
 
 </html>
