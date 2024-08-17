@@ -35,21 +35,18 @@ cognitoidentityserviceprovider.getUser(params, function(err, data) {
             {
                 UserName = data.UserAttributes[i].Value;
             }
-            if(data.UserAttributes[i].Name === 'email') {
-                UserEmail = data.UserAttributes[i].Value;
-            }
         }
 
-        /*for(var j = 0; j < data.UserAttributes.length; j++)
+        for(var j = 0; j < data.UserAttributes.length; j++)
         {
             if(data.UserAttributes[i].Name == 'email')
             {
                 UserEmail = data.UserAttributes[i].Value;
             }
-        }*/
+        }
 
-        document.getElementById('userName').innerHTML = UserName ||'No Name';;
-        document.getElementById('userEmail').innerHTML = UserEmail ||'No Email';  
+        document.getElementById('userName').innerHTML = UserName;
+        document.getElementById('userEmail').innerHTML = UserEmail;  
 
         document.getElementById('userNameInput').value =UserName;
         document.getElementById('userEmailInput').value = UserEmail;    
