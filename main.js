@@ -6,7 +6,7 @@ var idToken = finalURL.get("id_token")
 var UserName, UserEmail;
 
 // Change - Your region
-aws_region = 'ap-south-1';
+aws_region = 'ap-southeast-1';
 AWS.config.region = aws_region; 
 
 AWS.config.apiVersions = {
@@ -23,7 +23,7 @@ cognitoidentityserviceprovider.getUser(params, function(err, data) {
     if (err) 
     {
         // Change - Link to the Home Page
-        window.location.href = 'https://workshop.conglyblog.id.vn/'
+        window.location.href = 'https://conglytran0301.github.io/Serverless/'
     }
     else 
     {
