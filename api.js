@@ -10,7 +10,7 @@ var sendData = (userName,email, subject, description)=>{
         // Change - Your API here
         'https://7s5pb02ska.execute-api.ap-southeast-1.amazonaws.com/Dev/serverless', 
         {
-            method: "POST", 
+            method: "GET", 
             body: JSON.stringify({
                 "name": userName,
                 "email": email,
