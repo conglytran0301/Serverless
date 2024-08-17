@@ -1,4 +1,4 @@
-const url = window.location.href
+/*const url = window.location.href
 const replacedURL = url.replace('#', '&')
 const finalURL = new URLSearchParams(replacedURL)
 var accessToken = finalURL.get('access_token')
@@ -50,5 +50,52 @@ cognitoidentityserviceprovider.getUser(params, function(err, data) {
 
         document.getElementById('userNameInput').value =UserName;
         document.getElementById('userEmailInput').value = UserEmail;    
+    }
+});*/
+
+const url = window.location.href;
+const replacedURL = url.replace('#', '&');
+const finalURL = new URLSearchParams(replacedURL);
+var accessToken = finalURL.get('access_token');
+var idToken = finalURL.get("id_token");
+var UserName, UserEmail;
+
+aws_region = 'ap-southeast-1';
+AWS.config.region = aws_region;
+
+AWS.config.apiVersions = {
+    cognitoidentityserviceprovider: '2016-04-18'
+};
+
+var cognitoidentityserviceprovider = new AWS.CognitoIdentityServiceProvider();
+
+var params = {
+    AccessToken: accessToken
+};
+
+cognitoidentityserviceprovider.getUser(params, function(err, data) {
+    if (err) {
+        // Nếu có lỗi, điều hướng về trang đăng nhập hoặc trang chủ
+        window.location.href = 'https://conglytran0301.github.io/Serverless/';
+    } else {
+        console.log(data);
+
+        // Lấy thông tin người dùng từ phản hồi của Cognito
+        for (var i = 0; i < data.UserAttributes.length; i++) {
+            if (data.UserAttributes[i].Name === 'name') {
+                UserName = data.UserAttributes[i].Value;
+            }
+            if (data.UserAttributes[i].Name === 'email') {
+                UserEmail = data.UserAttributes[i].Value;
+            }
+        }
+
+        // Nạp thông tin vào các phần tử HTML
+        document.getElementById('userName').innerHTML = UserName;
+        document.getElementById('userEmail').innerHTML = UserEmail;
+
+        // Nạp thông tin vào các trường đầu vào của form
+        document.getElementById('userNameInput').value = UserName;
+        document.getElementById('userEmailInput').value = UserEmail;
     }
 });
