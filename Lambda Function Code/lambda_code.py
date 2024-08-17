@@ -6,7 +6,7 @@ import uuid
 dynamodb = boto3.resource('dynamodb')
 
 # Change - the name of the DynamoDB table
-table = dynamodb.Table('get-in-touch-table')
+table = dynamodb.Table('FCJ-DynamoDB')
 
 # Create an SNS Client
 client_sns = boto3.client('sns')
@@ -49,7 +49,7 @@ def handle_sns(id, event):
     client_sns.publish(
 
         # Change - the ARN to the ARN of your SNS
-        TopicArn='arn:aws:sns:ap-southeast-1:336760284039:FCJ-SNS:5b30fa93-d60e-4a60-8c4c-b01bd23084c4',
+        TopicArn='arn:aws:sns:ap-southeast-1:336760284039:FCJ-SNSTopic:fdaebf41-4539-4878-bc77-b05fd2be490a',
         Message= sns_message,
         Subject= event['subject']
     )
