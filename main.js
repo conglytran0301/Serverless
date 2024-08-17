@@ -100,7 +100,7 @@ cognitoidentityserviceprovider.getUser(params, function(err, data) {
     }
 });*/
 
-const url = window.location.href;
+/*const url = window.location.href;
 const replacedURL = url.replace('#', '&');
 const finalURL = new URLSearchParams(replacedURL);
 var accessToken = finalURL.get('access_token');
@@ -151,6 +151,70 @@ cognitoidentityserviceprovider.getUser(params, function(err, data) {
         }
         if (document.getElementById('userEmailInput')) {
             document.getElementById('userEmailInput').value = UserEmail;
+        }
+    }
+});
+*/
+
+// Lấy URL hiện tại và thay thế dấu # bằng &
+const url = window.location.href;
+const replacedURL = url.replace('#', '&');
+const finalURL = new URLSearchParams(replacedURL);
+
+// Lấy các token từ URL
+var accessToken = finalURL.get('access_token');
+var idToken = finalURL.get("id_token");
+var UserName, UserEmail;
+
+// Cấu hình AWS với vùng cụ thể
+const aws_region = 'ap-southeast-1';
+AWS.config.region = aws_region;
+
+AWS.config.apiVersions = {
+    cognitoidentityserviceprovider: '2016-04-18'
+};
+
+var cognitoidentityserviceprovider = new AWS.CognitoIdentityServiceProvider();
+
+// Thiết lập các tham số cho Cognito
+var params = {
+    AccessToken: accessToken
+};
+
+// Gọi hàm getUser để lấy thông tin người dùng
+cognitoidentityserviceprovider.getUser(params, function(err, data) {
+    if (err) {
+        // Nếu có lỗi, điều hướng về trang chủ hoặc trang đăng nhập
+        window.location.href = 'https://conglytran0301.github.io/Serverless/';
+    } else {
+        console.log(data);
+
+        // Duyệt qua các thuộc tính của người dùng và lấy thông tin cần thiết
+        data.UserAttributes.forEach(attribute => {
+            if (attribute.Name === 'name') {
+                UserName = attribute.Value;
+            } else if (attribute.Name === 'email') {
+                UserEmail = attribute.Value;
+            }
+        });
+
+        // Kiểm tra và gán giá trị cho các phần tử HTML, nếu tồn tại
+        const userNameDisplay = document.getElementById('userNameDisplay');
+        const userEmailDisplay = document.getElementById('userEmailDisplay');
+        const userNameInput = document.getElementById('userNameInput');
+        const userEmailInput = document.getElementById('userEmailInput');
+
+        if (userNameDisplay) {
+            userNameDisplay.innerHTML = UserName;
+        }
+        if (userEmailDisplay) {
+            userEmailDisplay.innerHTML = UserEmail;
+        }
+        if (userNameInput) {
+            userNameInput.value = UserName;
+        }
+        if (userEmailInput) {
+            userEmailInput.value = UserEmail;
         }
     }
 });
