@@ -54,7 +54,7 @@ var sendData = (userName, email, subject, description) => {
             }),
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': api_access_token  // Sử dụng đúng header Authorization cho access token
+                'Authorization': 'Bearer ${api_access_token}'  // Sử dụng đúng header Authorization cho access token
             },
         }
     )
