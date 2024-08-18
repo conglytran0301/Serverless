@@ -49,7 +49,7 @@ def lambda_handler(event, context):
 def handle_sns(id, event):
     try:
         sns_message = f"""
-            You got a new Message from https://conglytran0301.github.io/Serverless/
+            You got a new Message from https://workshop.conglyblog.id.vn/
             The message is as follows
             
             id      : {id}

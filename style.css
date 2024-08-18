@@ -13,11 +13,11 @@ section
     width: 100%;
     min-height: 100vh;
     padding: 10px 100px 0;
-    background: linear-gradient(to bottom, rgb(22, 128, 22), rgb(2, 2, 2));
+    background: linear-gradient(to bottom, rgb(20, 161, 204), rgb(2, 2, 2));
 }
 section::before
 {
-    content: 'Get in Touch';
+    content: 'Ly Tran';
     position: absolute;
     font-size: 10vw;
     color: rgba(0, 0, 0, 0.1);

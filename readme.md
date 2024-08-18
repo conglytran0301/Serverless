@@ -7,8 +7,6 @@
      Configure API Gateway to integrate with AWS Cognito, to serve the content only to the Authenticated user.
      Send an email to the developer, if the API is involed using SNS.
 
-# Youtube Video Link
-
 # AWS Services used
 
     AWS Cognito
@@ -17,6 +15,7 @@
     AWS DynamoDB
     AWS SNS
     S3
+    Route53
 
 ## Note
 

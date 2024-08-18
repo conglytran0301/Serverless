@@ -18,7 +18,7 @@ var params = {
 
 cognitoidentityserviceprovider.getUser(params, function(err, data) {
     if (err) {
-        window.location.href = 'https://conglytran0301.github.io/Serverless/';
+        window.location.href = 'https://workshop.conglyblog.id.vn/';
     } else {
         console.log(data);
 
