@@ -76,7 +76,7 @@ fetch(proxyUrl + apiUrl, {
     method: "POST",
     headers: {
         'Content-Type': 'application/json',
-        'Authorization': api_access_tokeng
+        'Authorization': api_access_token
     },
     body: JSON.stringify({
         "name": userName,
