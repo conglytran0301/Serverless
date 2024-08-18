@@ -47,10 +47,10 @@ var sendData = (userName, email, subject, description) => {
         {
             method: "POST",
             body: JSON.stringify({
-                "name": conglytran0301,
-                "email": congly.work@gmail.com,
-                "subject": hi-test,
-                "description": tessttt
+                "name": userName,
+                "email": email,
+                "subject": subject,
+                "description": description
             }),
             headers: {
                 'Content-Type': 'application/json',
