@@ -10,6 +10,4 @@
   "author": "",
   "license": "ISC"
 }
-"scripts": {
-  "build": "react-scripts build"
-}
+
