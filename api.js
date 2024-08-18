@@ -35,7 +35,7 @@ var sendData = (userName,email, subject, description)=>{
         .catch(error => console.log('error', error));
 }*/
 
-const apiUrl = window.location.href;
+/*const apiUrl = window.location.href;
 const apiReplacedURL = apiUrl.replace('#', '&');
 const apiFinalURL = new URLSearchParams(apiReplacedURL);
 
@@ -68,4 +68,44 @@ var sendData = (userName, email, subject, description) => {
         }
     })
     .catch(error => console.error('Error:', error));
-}
+}*/ 
+
+const apiUrl = window.location.href;
+const apiReplacedURL = apiUrl.replace('#', '&');
+const apiFinalURL = new URLSearchParams(apiReplacedURL);
+
+var api_access_token = apiFinalURL.get('access_token'); // Chỉ lấy giá trị access_token từ URL
+
+var sendData = (userName, email, subject, description) => {
+    fetch(
+        'https://7s5pb02ska.execute-api.ap-southeast-1.amazonaws.com/Dev/serverless',
+        {
+            method: "POST",
+            body: JSON.stringify({
+                "name": userName,
+                "email": email,
+                "subject": subject,
+                "description": description
+            }),
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${eyJraWQiOiJLQXA1dEdPRUw1clltKzRmVnJrRzRCaUVyM0todFdwVnFTa1VZZjZKblV3PSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiIzOTVhNjUyYy04MGExLTcwZWMtZDI0NS0yOGNlMjc2NmQ0NDAiLCJ0b2tlbl91c2UiOiJhY2Nlc3MiLCJzY29wZSI6ImF3cy5jb2duaXRvLnNpZ25pbi51c2VyLmFkbWluIHBob25lIG9wZW5pZCBwcm9maWxlIGVtYWlsIiwiYXV0aF90aW1lIjoxNzIzOTUxODIxLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAuYXAtc291dGhlYXN0LTEuYW1hem9uYXdzLmNvbVwvYXAtc291dGhlYXN0LTFfc0RLMGUzRlEwIiwiZXhwIjoxNzIzOTU1NDIxLCJpYXQiOjE3MjM5NTE4MjEsInZlcnNpb24iOjIsImp0aSI6IjhkNDEzNjA5LTRhZWUtNGM5YS1iZGNhLTcwZDNmMjE5N2MzNyIsImNsaWVudF9pZCI6ImE0dWdkdnRmbDFiMDQzMXAxb3B0a2s4aDEiLCJ1c2VybmFtZSI6ImNvbmdseXRyYW4wNjAzIn0.pYo-_aW686pkswOdgh7vVBcxqc0b7xxhpmwrO9pFmuVkNA_y8gNlAmlKDl858uOtMzFEiR7Bme6oqcDcQX0g9TxVh6YjfTuaDzHLveH8Yt-bGhxuJ7ALHsZ6nh94uUrisno84PF71btqHFA5LIuk1dlD4Y6v7i-goVfwtq2gm6Nr5xBUuV_LfDa0xydohgqLS8IM7KRLASbQiGvyPi7tEj7PwMRvjbuOqdPIV0yRnVlWhgw4uFNaNLh0OIwncEhFHp36J5zGbxuNe9iKEHZakZyHIHCpi4FmkM2OI8Ta9ch6KJIxe6vtpIaHQgiB7l0-McJ63G9kzMvBJEcMZKE7fA}`  // Đảm bảo định dạng "Bearer <token>"
+            },
+        }
+    )
+    .then(response => {
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error('Network response was not ok.');
+        }
+    })
+    .then(result => {
+        alert("Successfully Sent the Message");
+    })
+    .catch(error => {
+        alert("Error in sending message");
+        console.error('Error:', error);
+    });
+};
+
