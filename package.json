@@ -4,7 +4,7 @@
   "description": "Host a website on any hosting Platform.\r      Configure it to use AWS Cognito\r      Configure API Gateway to integrate with AWS Cognito, to serve the content only to the Authenticated user.\r      Send an email to the developer, if the API is involed using SNS.",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "serverless build"
   },
   "keywords": [],
   "author": "",
