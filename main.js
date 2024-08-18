@@ -218,3 +218,16 @@ cognitoidentityserviceprovider.getUser(params, function(err, data) {
         }
     }
 });
+
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    if (request.action === "someAction") {
+        // Xử lý không đồng bộ
+        someAsyncFunction().then((result) => {
+            sendResponse({ success: true, data: result });
+        }).catch((error) => {
+            sendResponse({ success: false, error: error });
+        });
+        return true;  // Cho biết rằng sẽ có một phản hồi không đồng bộ
+    }
+});
+
