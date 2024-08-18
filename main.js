@@ -218,3 +218,4 @@ cognitoidentityserviceprovider.getUser(params, function(err, data) {
         }
     }
 });
+
