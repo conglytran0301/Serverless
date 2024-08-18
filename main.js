@@ -219,15 +219,42 @@ cognitoidentityserviceprovider.getUser(params, function(err, data) {
     }
 });
 
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-    if (request.action === "someAction") {
-        // Xử lý không đồng bộ
-        someAsyncFunction().then((result) => {
-            sendResponse({ success: true, data: result });
-        }).catch((error) => {
-            sendResponse({ success: false, error: error });
+document.addEventListener('DOMContentLoaded', function () {
+    // Kiểm tra nếu chrome.runtime tồn tại và có thuộc tính onMessage
+    if (chrome && chrome.runtime && chrome.runtime.onMessage) {
+        chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+            // Kiểm tra request và xử lý theo yêu cầu
+            if (request.action === "updateDOM") {
+                let element = document.getElementById(request.elementId);
+                if (element) {
+                    element.innerHTML = request.content;
+                } else {
+                    console.error(`Element with ID ${request.elementId} not found.`);
+                }
+            }
+            // Đảm bảo gửi phản hồi
+            sendResponse({ status: "success" });
         });
-        return true;  // Cho biết rằng sẽ có một phản hồi không đồng bộ
+    } else {
+        console.error("chrome.runtime.onMessage is not available.");
     }
 });
+
+// Example function to send a message
+function sendMessageToExtension() {
+    if (chrome && chrome.runtime && chrome.runtime.sendMessage) {
+        chrome.runtime.sendMessage({ action: "updateDOM", elementId: "myElement", content: "New Content" }, function (response) {
+            if (response && response.status === "success") {
+                console.log("DOM updated successfully.");
+            } else {
+                console.error("Failed to update DOM.");
+            }
+        });
+    } else {
+        console.error("chrome.runtime.sendMessage is not available.");
+    }
+}
+
+// Example call to the sendMessage function
+sendMessageToExtension();
 
