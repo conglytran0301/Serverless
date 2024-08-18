@@ -69,7 +69,7 @@ var sendData = (userName, email, subject, description) => {
     .catch(error => console.error('Error:', error));
 }*/
 
-var proxyUrl = 'https://your-proxy-server.com/';
+/*var proxyUrl = 'https://your-proxy-server.com/';
 var apiUrl = 'https://7s5pb02ska.execute-api.ap-southeast-1.amazonaws.com/Dev/serverless';
 
 fetch(proxyUrl + apiUrl, {
@@ -92,4 +92,33 @@ fetch(proxyUrl + apiUrl, {
 .catch(error => {
     alert("Error in sending message");
     console.error('Error:', error);
-});
+});*/
+
+// Định nghĩa hàm sendData
+function sendData(userName, email, subject, description) {
+    var proxyUrl = 'https://your-proxy-server.com/';
+    var apiUrl = 'https://7s5pb02ska.execute-api.ap-southeast-1.amazonaws.com/Dev/serverless';
+
+    fetch(proxyUrl + apiUrl, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': api_access_token
+        },
+        body: JSON.stringify({
+            "name": userName,
+            "email": email,
+            "subject": subject,
+            "description": description
+        })
+    })
+    .then(response => response.json())
+    .then(result => {
+        alert("Successfully Sent the Message");
+    })
+    .catch(error => {
+        alert("Error in sending message");
+        console.error('Error:', error);
+    });
+}
+
