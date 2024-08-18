@@ -100,7 +100,7 @@ cognitoidentityserviceprovider.getUser(params, function(err, data) {
     }
 });*/
 
-/*const url = window.location.href;
+const url = window.location.href;
 const replacedURL = url.replace('#', '&');
 const finalURL = new URLSearchParams(replacedURL);
 var accessToken = finalURL.get('access_token');
@@ -154,9 +154,9 @@ cognitoidentityserviceprovider.getUser(params, function(err, data) {
         }
     }
 });
-*/
 
-// Lấy URL hiện tại và thay thế dấu # bằng &
+
+/* // Lấy URL hiện tại và thay thế dấu # bằng &
 const url = window.location.href;
 const replacedURL = url.replace('#', '&');
 const finalURL = new URLSearchParams(replacedURL);
@@ -218,4 +218,4 @@ cognitoidentityserviceprovider.getUser(params, function(err, data) {
         }
     }
 });
-
+*/
